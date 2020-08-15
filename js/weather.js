@@ -8,7 +8,8 @@ weather.temperature = {
     unit: 'Fahrenheit',
 };
 
-const KELVIN = 273;
+const KELVIN = 273.15;
+
 // Use your own key for the Weather, Get it here: https://openweathermap.org/
 const key = 'c23135aea93f242cb1344adbfb030325';
 
@@ -36,7 +37,7 @@ function getWeather(latitude, longitude) {
             return data;
         })
         .then(function (data) {
-            weather.temperature.value = Math.floor(data.main.temp);
+            weather.temperature.value = Math.floor(((data.main.temp - KELVIN)*1.8000)+32);
             weather.description = data.weather[0].description;
             weather.iconId = data.weather[0].icon;
         })
@@ -48,6 +49,6 @@ function getWeather(latitude, longitude) {
 // Display Weather info
 function displayWeather() {
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
-    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+    tempElement.innerHTML = `${weather.temperature.value}°<span>F</span>`;
     descElement.innerHTML = weather.description;
 }
