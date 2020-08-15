@@ -10,7 +10,7 @@ weather.temperature = {
 
 const KELVIN = 273;
 // Use your own key for the Weather, Get it here: https://openweathermap.org/
-const key = '844b3d05aab626e24b442cc6ffadf2de';
+const key = 'c23135aea93f242cb1344adbfb030325';
 
 // Set Position function
 setPosition();
